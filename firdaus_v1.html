@@ -1,0 +1,108 @@
+<script>
+  // start local variable
+  var closeBtSrc = "https://lh4.googleusercontent.com/proxy/mRTcxoAiX8Yws2N-U-X9P76GD8ugFb5OcUPvP21_QiTRjoHReZyvgxYoKj8vbXQ0TJwM5CA-ZP_YvuHBIcz4l6rSKhRBPzYHnYYgUCB2IDsnab8APKuSVQwLonDAMw";
+  var imgSrc = "https://www.a1carpet-to.com/wp-content/uploads/2015/08/600x400.png";
+  var landingPage = '"https://bit.ly/Rex1054"';
+  // end local variable
+  
+  // select body tag
+  var induk = window.parent.document.body;
+  // select div
+  var indukIframe = window.parent.document.getElementById("div-gpt-liputan6-popup");
+  
+  // start style
+  // container
+  var coStyle = `display: none;
+  background: rgba(0,0,0,0.5);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;`;
+  // wrapper
+  var wrStyle = `top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 400px;
+  position: absolute;`;
+  // img
+  var imStyle = `width: 100%;
+  position: absolute;
+  left: 0;`;
+  // close
+  var clStyle = `position: absolute;
+  margin-left: 565px;
+  top: 1%;
+  left: 0;
+  z-index: 3;
+  width: 30px;`;
+  // center
+  var ceStyle = `position: absolute;
+  height: 100vh;
+  width: 600px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);`;
+  // end style
+  
+  // start template html
+  var template = `<center style="${ceStyle}">
+  <div id="pop-ad-img-wrapper" style="${wrStyle}">
+  <img src="${closeBtSrc}" id="pop-close-bt" onclick="hidePopAd()" style="${clStyle}">
+  <img src="${imgSrc}" id="pop-img-firdaus" onclick="openLP()" style="${imStyle}">
+  </div>
+  </center>`;
+  // end template html
+  
+  // start iframe inside-script
+  var iScript = `function hidePopAd(){
+      var popAd = document.getElementById("pop-img-container");
+      popAd.style.display = "none";
+      window.removeEventListener("scroll", myScroll);
+  }
+  function openLP(){
+      window.open(${landingPage}, "_BLANK");
+      window.removeEventListener("scroll", myScroll);
+  }`;
+  // end iframe inside-script
+  
+  // start implement all script
+  // page load function
+  induk.addEventListener("load", createAd());
+  
+  var windows = window.parent.window;
+  
+  // scrolling 1300
+  function myScroll(){
+      var popAd = window.parent.document.getElementById("pop-img-container");
+      
+      if (induk.scrollTop > 1300 || window.parent.document.documentElement.scrollTop > 1300) {
+          popAd.style.display = "block";
+      }
+  
+      if (popAd.style.display == "block"){
+          windows.removeEventListener("scroll", myScroll);
+      }
+  }
+  
+  windows.addEventListener("scroll", myScroll);
+  // end implement all script
+  
+  // start local script
+  // create Ad inside iframe
+  function createAd(){  
+      // create container
+      var container = document.createElement("div");
+      container.setAttribute("id", "pop-img-container");
+      container.innerHTML = template;
+      container.style = coStyle;
+      // create script tag
+      var ifScript = document.createElement("script");
+      ifScript.innerHTML = iScript;
+      indukIframe.appendChild(ifScript);
+      indukIframe.appendChild(container);
+  
+  }
+  // end local script
+  </script>

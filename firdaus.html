@@ -1,108 +1,160 @@
 <script>
-// start local variable
-var closeBtSrc = "https://lh4.googleusercontent.com/proxy/mRTcxoAiX8Yws2N-U-X9P76GD8ugFb5OcUPvP21_QiTRjoHReZyvgxYoKj8vbXQ0TJwM5CA-ZP_YvuHBIcz4l6rSKhRBPzYHnYYgUCB2IDsnab8APKuSVQwLonDAMw";
-var imgSrc = "https://www.a1carpet-to.com/wp-content/uploads/2015/08/600x400.png";
-var landingPage = '"https://bit.ly/Rex1054"';
-// end local variable
-
-// select body tag
-var induk = window.parent.document.body;
-// select div
-var indukIframe = window.parent.document.getElementById("div-gpt-liputan6-popup");
-
-// start style
-// container
-var coStyle = `display: none;
-background: rgba(0,0,0,0.5);
-width: 100vw;
-height: 100vh;
-position: fixed;
-z-index: 9999;
-top: 0;
-left: 0;`;
-// wrapper
-var wrStyle = `top: 50%;
-transform: translateY(-50%);
-width: 600px;
-height: 400px;
-position: absolute;`;
-// img
-var imStyle = `width: 100%;
-position: absolute;
-left: 0;`;
-// close
-var clStyle = `position: absolute;
-margin-left: 565px;
-top: 1%;
-left: 0;
-z-index: 3;
-width: 30px;`;
-// center
-var ceStyle = `position: absolute;
-height: 100vh;
-width: 600px;
-top: 0;
-left: 50%;
-transform: translateX(-50%);`;
-// end style
-
-// start template html
-var template = `<center style="${ceStyle}">
-<div id="pop-ad-img-wrapper" style="${wrStyle}">
-<img src="${closeBtSrc}" id="pop-close-bt" onclick="hidePopAd()" style="${clStyle}">
-<img src="${imgSrc}" id="pop-img-firdaus" onclick="openLP()" style="${imStyle}">
-</div>
-</center>`;
-// end template html
-
-// start iframe inside-script
-var iScript = `function hidePopAd(){
-    var popAd = document.getElementById("pop-img-container");
-    popAd.style.display = "none";
-    window.removeEventListener("scroll", myScroll);
-}
-function openLP(){
-    window.open(${landingPage}, "_BLANK");
-    window.removeEventListener("scroll", myScroll);
-}`;
-// end iframe inside-script
-
-// start implement all script
-// page load function
-induk.addEventListener("load", createAd());
-
-var windows = window.parent.window;
-
-// scrolling 1300
-function myScroll(){
-    var popAd = window.parent.document.getElementById("pop-img-container");
+    var closeBtSrc = "https://lh4.googleusercontent.com/proxy/mRTcxoAiX8Yws2N-U-X9P76GD8ugFb5OcUPvP21_QiTRjoHReZyvgxYoKj8vbXQ0TJwM5CA-ZP_YvuHBIcz4l6rSKhRBPzYHnYYgUCB2IDsnab8APKuSVQwLonDAMw";
+    var videoSrc = "https://www.youtube.com/watch?v=xp4S6m0tqiM";
+    var videoCss = "https://vjs.zencdn.net/7.6.6/video-js.css";
+    var videoJs = "node_modules/video.js/dist/video.js";
+    var youtubeJs = "node_modules/videojs-youtube/dist/Youtube.min.js";
+    var videoI8Js = "https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js";
+    var landingPage = "https://bit.ly/Rex1054";
     
-    if (induk.scrollTop > 1300 || window.parent.document.documentElement.scrollTop > 1300) {
-        popAd.style.display = "block";
-    }
+    // start style
+    // container
+    var coStyle = `display: none;
+    background: rgba(0,0,0,0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;`;
+    // wrapper
+    var wrStyle = `top: 50%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 400px;
+    position: absolute;`;
+    // img
+    var imStyle = `width: 100%;
+    position: absolute;
+    left: 0;`;
+    // close
+    var clStyle = `position: absolute;
+    margin-left: 565px;
+    top: 1%;
+    left: 0;
+    z-index: 3;
+    width: 30px;`;
+    // center
+    var ceStyle = `position: absolute;
+    height: 100vh;
+    width: 600px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);`;
+    // end style
+    
+    var parentLiputanBody = window.parent.document.body;
+    var parentLiputanHead = window.parent.document.head;
+    var parentDiv = window.parent.document.getElementById("div-gpt-liputan6-popup");
+    
+    var bakalCSS = document.createElement("link");
+    bakalCSS.setAttribute("rel", "stylesheet");
+    bakalCSS.setAttribute("href", videoCss);
+    
+    var bakalScript = document.createElement("script");
+    bakalScript.src = videoJs;
+    
+    var bakalScriptI8 = document.createElement("script");
+    bakalScriptI8.src = videoI8Js;
+    
+    var bakalScriptYT = document.createElement("script");
+    bakalScriptYT.src = youtubeJs;
+    
+    parentLiputanHead.appendChild(bakalCSS);
+    parentLiputanHead.appendChild(bakalScriptI8);
+    
+    setTimeout(function(){
+        parentLiputanBody.appendChild(bakalScript);
+    }, 200);
+    
+    setTimeout(function(){
+        parentLiputanBody.appendChild(bakalScriptYT);
+    }, 1200);
+    
+    
+    var bakalCenter = document.createElement("center");
+    bakalCenter.setAttribute("style", ceStyle);
+    
+    var wrapper = document.createElement("div");
+    wrapper.setAttribute("id", "pop-ad-img-wrapper");
+    wrapper.style = wrStyle;
+    
+    var closeBt = document.createElement("img");
+    closeBt.src = closeBtSrc;
+    closeBt.style = clStyle;
+    
+    // var bakalVideo = document.createElement("video");
+    // bakalVideo.setAttribute("id", "my-video");
+    // bakalVideo.setAttribute("class", "video-js vjs-default-skin");
+    // bakalVideo.setAttribute("autoplay", "true");
+    // bakalVideo.setAttribute("preload", "auto");
+    // bakalVideo.setAttribute("width", "600");
+    // bakalVideo.setAttribute("height", "400");
+    // bakalVideo.setAttribute("data-setup", `{ "techOrder": ["youtube", "html5"], "sources": [{ "type": "video/youtube", "src": "${videoSrc}"}], "youtube": { "ytControls": 2 } }`);
+    
+    var bakalVideo = `<video
+    id="my-video"
+    class="video-js"
+    autoplay=true
+    preload="auto"
+    width="600"
+    height="400"
+    data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xp4S6m0tqiM"}], "youtube": { "ytControls": 2 } }'
+    >
+    <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a
+        web browser that
+        <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+        >
+    </p>
+</video>`;
 
-    if (popAd.style.display == "block"){
-        windows.removeEventListener("scroll", myScroll);
-    }
+function openLP(){
+    open(landingPage, "_BLANK");
+    parentDiv.removeEventListener("click", openLP);
 }
 
-windows.addEventListener("scroll", myScroll);
-// end implement all script
+parentDiv.style = coStyle;
 
-// start local script
-// create Ad inside iframe
-function createAd(){  
-    // create container
-    var container = document.createElement("div");
-    container.setAttribute("id", "pop-img-container");
-    container.innerHTML = template;
-    container.style = coStyle;
-    // create script tag
-    var ifScript = document.createElement("script");
-    ifScript.innerHTML = iScript;
-    indukIframe.appendChild(ifScript);
-    indukIframe.appendChild(container);
 
-}
-// end local script
+
+// wrapper.appendChild(bakalVideo);
+wrapper.innerHTML = bakalVideo;
+wrapper.appendChild(closeBt);
+bakalCenter.appendChild(wrapper);
+
+
+var x = setInterval(function(){
+    if (typeof parent.window.videojs == "function"){
+        console.log(parent.window.videojs);
+        clearInterval(x);
+        
+        parentDiv.appendChild(bakalCenter);
+        
+        closeBt.addEventListener("click", function(){
+            parentDiv.style.display = "none";
+        });
+        
+        parentDiv.addEventListener("click", openLP);
+        
+        function myScroll(){
+            var popAd = parentDiv;
+            
+            if (parentLiputanBody.scrollTop > 1300 || window.parent.document.documentElement.scrollTop > 1300) {
+                popAd.style.display = "block";
+            }
+            
+            if (popAd.style.display == "block"){
+                windows.removeEventListener("scroll", myScroll);
+            }
+        }
+        
+        var windows = window.parent.window;
+        
+        windows.addEventListener("scroll", myScroll);
+        
+    }
+}, 1000);
+
 </script>
