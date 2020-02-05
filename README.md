@@ -2,7 +2,7 @@
 ---
 Detail:
 >firdaus_v1.html
->>popup iamge
+>>popup image
 
 >firdaus.html
 >>popup youtube video (videojs)
