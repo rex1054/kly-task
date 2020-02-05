@@ -2,7 +2,7 @@
 >details:
 >>firdaus_v1.html
 >>>popup image
->>>
+>> <br />
 >>firdaus.html
 >>>popup youtube video (videojs)
 >>>unzip "node_modules.zip" first
