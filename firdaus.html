@@ -133,7 +133,7 @@ var x = setInterval(function(){
         parentDiv.appendChild(bakalCenter);
         
         closeBt.addEventListener("click", function(){
-            parentDiv.style.display = "none";
+            parentDiv.remove();
         });
         
         parentDiv.addEventListener("click", openLP);
